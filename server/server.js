@@ -27,6 +27,7 @@ const corOptions = {
   credentials: true,
 };
 app.use(cors(corOptions));
+app.use(express.urlencoded({ extended: true }));
 
 // MongoDB Connection
 const mongoUri = process.env.MONGODB_URL;
@@ -80,6 +81,13 @@ io.on("connection", (socket) => {
 
   socket.on("disconnect", () => {
     console.log("User disconnected:", socket.id);
+  });
+});
+
+app.get('/',(req,res)=>{
+  return res.status(200).json({
+      success:true,
+      message:'Server is up and running....'
   });
 });
 
