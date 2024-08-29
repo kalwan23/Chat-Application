@@ -23,6 +23,7 @@ const io = new Server(server, {
 app.use(express.json());
 const corOptions = {
   origin: 'https://chat-application-seven-alpha.vercel.app',
+  methods: ["GET", "POST", "PUT"],
   credentials: true,
 };
 app.use(cors(corOptions));
@@ -41,10 +42,10 @@ mongoose
   });
 
 // Deployment 
-app.get("/", (req, res) => {
-  app.use(express.static(path.resolve(__dirname, "client", "build")));
-  res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
-});
+// app.get("/", (req, res) => {
+//   app.use(express.static(path.resolve(__dirname, "client", "build")));
+//   res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+// });
 
 
 app.use("/users", UserRouter);
