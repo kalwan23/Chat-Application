@@ -22,7 +22,7 @@ const io = new Server(server, {
 // Middleware
 app.use(express.json());
 const corOptions = {
-  origin: "http://localhost:3000",
+  origin: 'https://chat-application-seven-alpha.vercel.app',
   credentials: true,
 };
 app.use(cors(corOptions));
