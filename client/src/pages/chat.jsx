@@ -32,7 +32,7 @@ const Chat = () => {
   }, [navigate]);
 
   useEffect(() => {
-    const socket = io("http://localhost:8080");
+    const socket = io("https://chat-application-g3wa.vercel.app");
     socket.on("newChat", (chat_id) => {
       console.log("New chat created with chat-id:", chat_id);
       fetchChats(); // Re-fetch chats when a new chat is created
@@ -56,7 +56,7 @@ const Chat = () => {
     }
     try {
       const res = await axios.get(
-        "http://localhost:8080/users/chats/getallchats",
+        "https://chat-application-g3wa.vercel.app/users/chats/getallchats",
         {
           headers: {
             Authorization: `Bearer ${token}`,

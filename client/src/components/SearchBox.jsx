@@ -15,7 +15,7 @@ const SearchBox = ({ isOpen, onClose }) => {
       try {
         const token = localStorage.getItem("token");
         const res = await axios.get(
-          `http://localhost:8080/users/getusers/${username}`,
+          `https://chat-application-g3wa.vercel.app/users/getusers/${username}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -54,7 +54,7 @@ const SearchBox = ({ isOpen, onClose }) => {
 
     try {
       const res = await axios.post(
-        "http://localhost:8080/users/chats/createchat",
+        "https://chat-application-g3wa.vercel.app/users/chats/createchat",
         chatData,
         {
           headers: {
@@ -66,7 +66,7 @@ const SearchBox = ({ isOpen, onClose }) => {
       if (res.status === 201) {
         // Socket.IO implementation
         const chat_id = res.data.data._id;
-        const socket = io("http://localhost:8080");
+        const socket = io("https://chat-application-g3wa.vercel.app");
         socket.emit("Created_chat", chat_id);
 
         toast.success(res.data.message);

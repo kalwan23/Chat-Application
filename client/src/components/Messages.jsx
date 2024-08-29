@@ -18,7 +18,7 @@ const Messages = ({ chat_id }) => {
     const fetchMessages = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:8080/users/chats/get/${chat_id}`,
+          `https://chat-application-g3wa.vercel.app/users/chats/get/${chat_id}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -41,7 +41,7 @@ const Messages = ({ chat_id }) => {
   }, [chat_id, token]);
 
   useEffect(() => {
-    const socket = io("http://localhost:8080");
+    const socket = io("https://chat-application-g3wa.vercel.app");
     
     socket.emit("join_chat", chat_id);
    
@@ -69,7 +69,7 @@ const Messages = ({ chat_id }) => {
 
     try {
       const res = await axios.post(
-        `http://localhost:8080/users/chats/send/${chat_id}`,
+        `https://chat-application-g3wa.vercel.app/users/chats/send/${chat_id}`,
         {
           content: newMessage,
         },
@@ -80,7 +80,7 @@ const Messages = ({ chat_id }) => {
           },
         }
       );
-      const socket = io("http://localhost:8080");
+      const socket = io("https://chat-application-g3wa.vercel.app");
       if (res.status === 201) {
         socket.emit("send_message", {
           _id: chat_id,
