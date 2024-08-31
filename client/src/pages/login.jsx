@@ -19,7 +19,7 @@ const Login = () => {
     const user = { email, password };
 
     try {
-      const res = await axios.post("https://chat-application-g3wa.vercel.app/users/login", user, {
+      const res = await axios.post("https://express-real-time-chat.onrender.com/users/login", user, {
         headers: {
           "Content-Type": "application/json",
         },

@@ -26,7 +26,7 @@ const GroupForm = ({ onClose }) => {
     if (searchTerm) {
       try {
         const res = await axios.get(
-          `https://chat-application-g3wa.vercel.app/users/getusers/${searchTerm}`,
+          `https://express-real-time-chat.onrender.com/users/getusers/${searchTerm}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -66,7 +66,7 @@ const GroupForm = ({ onClose }) => {
     if (memberIds.length >= 1) {
       try {
         const res = await axios.post(
-          "https://chat-application-g3wa.vercel.app/users/chats/creategroup",
+          "https://express-real-time-chat.onrender.com/users/chats/creategroup",
           {
             name: groupName,
             members: memberIds,
@@ -83,7 +83,7 @@ const GroupForm = ({ onClose }) => {
 
         if (res) {
           if (res.status === 201) {
-            const socket = io("https://chat-application-g3wa.vercel.app");
+            const socket = io("https://express-real-time-chat.onrender.com");
             socket.emit("Group_created", { msg: "groupfromed" });
             toast.success("Group chat created successfully");
             setGroupName("");
